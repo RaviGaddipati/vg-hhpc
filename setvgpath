@@ -1,5 +1,5 @@
 #!/bin/bash
 
 export 
-LD_LIBRARY_PATH=$HOME/gcc-4.9.3/lib64:$HOME/jansson/lib:$LD_LIBRARY_PATH
+LD_LIBRARY_PATH=$HOME/gcc-4.9.3/lib64:$HOME/jansson-2.7/lib:$LD_LIBRARY_PATH
 export PATH=$HOME/vg:$PATH
