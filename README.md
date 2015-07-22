@@ -27,16 +27,12 @@ cd jansson-2.7
 make && make install
 ```
 
-# vg usage
+# vg Usage
 See 
 
 `https://docs.google.com/presentation/d/1bbl2zY4qWQ0yYBHhoVuXb79HdgajRotIUa_VEn3kTpI/edit#slide=id.g98a48eac1_0_16`
 
 for more information.
-
-Extract an individual sample from a VCF (windows application) with:
-
-https://github.com/gaddra/variantGen
 
 When using  vg in a new session, add vg and jansson to your path using `setvgpath` in the current shell with `. ./setvgpath`
 
