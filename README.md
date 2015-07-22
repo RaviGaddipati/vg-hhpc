@@ -42,4 +42,5 @@ An associated graph with the same node numbering that does not have any variants
 
 `vg mod -k NAME > output_ref.vg`
 
-where `NAME` is the name of the reference fasta used to create the graph.
+where `NAME` is the name of the reference fasta used to create the graph. In the below example, the top graph was joined to a copy of itself using `vg concat` to create the second graph. The reference was made from the second graph using `vg mod`.
+![](https://raw.githubusercontent.com/gaddra/vg-Info/master/vgEx.png)
