@@ -1,4 +1,5 @@
 #!/bin/bash
 
-export LD_LIBRARY_PATH=/home/rgaddip1/POASim/gcc/lib64:/home/rgaddip1/jansson/lib:$LD_LIBRARY_PATH
-export PATH=/home/rgaddip1/POASim/vg:$PATH
+export 
+LD_LIBRARY_PATH=$HOME/gcc-4.9.3/lib64:$HOME/jansson/lib:$LD_LIBRARY_PATH
+export PATH=$HOME/vg:$PATH
