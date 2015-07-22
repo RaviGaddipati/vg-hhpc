@@ -32,7 +32,7 @@ make && make install
 # vg Usage
 See 
 
-`https://docs.google.com/presentation/d/1bbl2zY4qWQ0yYBHhoVuXb79HdgajRotIUa_VEn3kTpI/edit#slide=id.g98a48eac1_0_16`
+https://docs.google.com/presentation/d/1bbl2zY4qWQ0yYBHhoVuXb79HdgajRotIUa_VEn3kTpI/edit#slide=id.g98a48eac1_0_16
 
 for more information.
 
