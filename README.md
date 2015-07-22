@@ -3,7 +3,7 @@
 
 In a directory where you want vg to be clone vg-hhpc (on HHPC login node for git):
 
-`git clone --recursive https://github.com/gaddra/vg-hhpc`
+`git clone --recursive https://github.com/gaddra/vg-hhpc.git`
 
 In some working build directory:
 
