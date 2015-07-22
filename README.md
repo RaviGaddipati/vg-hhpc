@@ -1,11 +1,11 @@
 # Building vg on HHPC
 **BUILD INSTRUCTIONS INCOMPLETE**
 
-In a directory where you want vg to be clone vg-Info (on HHPC login node for git):
+In a directory where you want vg to be clone vg-hhpc (on HHPC login node for git):
 
-`git clone --recursive https://github.com/gaddra/vg-Info`
+`git clone --recursive https://github.com/gaddra/vg-hhpc`
 
-In some working directory:
+In some working build directory:
 
 **GCC install**
 ```
