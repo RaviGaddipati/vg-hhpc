@@ -5,6 +5,8 @@ In a directory where you want vg to be clone vg-hhpc (on HHPC login node for git
 
 `git clone --recursive https://github.com/gaddra/vg-hhpc.git`
 
+If during make files aren't found you may have to go into the directory and run `git init && git update` to get all the submodules.
+
 In some working build directory:
 
 **GCC install**
@@ -16,11 +18,15 @@ cd gcc-4.9.3
 mkdir gcc-build && cd gcc-build
 ../gcc-4.9.3/configure --prefix=$HOME/gcc-4.9.3
 make && make install
-(if you start a new session, paths might have to be set again)
+```
+
+Set paths so the new GCC is used:
+
+```
 export PATH=$HOME/gcc-4.9.3/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/gcc/lib64:$LD_LIBRARY_PATH
 ```
-**get jansson**
+**Get jansson**
 ```
 wget http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
 tar -zxf jansson-2.7.tar.gz && rm jansson-2.7.tar.gz
@@ -28,6 +34,27 @@ cd jansson-2.7
 ./configure --prefix=$HOME/jansson-2.7
 make && make install
 ```
+**Get cmake**
+```
+cd
+wget http://www.cmake.org/files/v3.2/cmake-3.2.3-Linux-x86_64.sh
+chmod +x cmake-3.2.3-Linux-x86_64.sh (agree to lic, then press y)
+export PATH=$HOME/cmake-3.2.3-Linux-x86_64/bin:$PATH
+```
+**Get glibc**
+```
+wget http://gnu.mirror.iweb.com/libc/glibc-2.6.1.tar.gz
+tar -zxf glibc-2.6.1.tar.gz && rm glibc-2.6.1.tar.gz
+mkdir glibc-build && cd glibc-build
+../glibc-2.6.1/configure --prefix=$HOME/glibc-2.6.1
+make && make install
+cd
+export LD_LIBRARY_PATH=$HOME/glibc-2.6.1/include:$LD_LIBRARY_PATH
+```
+
+edit `vg-hhpc/vg/Makefile` and add `-I$HOME/jansson-2.7/include` to `INCLUDES`. Add `-L$HOME/jansson-2.7/lib` to `LDFLAGS`.
+
+Execute `make` in `vg-hhpc/vg`.
 
 # vg Usage
 See 
