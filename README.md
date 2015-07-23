@@ -41,20 +41,62 @@ wget http://www.cmake.org/files/v3.2/cmake-3.2.3-Linux-x86_64.sh
 chmod +x cmake-3.2.3-Linux-x86_64.sh (agree to lic, then press y)
 export PATH=$HOME/cmake-3.2.3-Linux-x86_64/bin:$PATH
 ```
-**Get glibc**
+There was a problem with index.hpp compiling, so I added the following to index.hpp after `namespace vg {`. Don't know the correct solution or even if this will affect functionality (though it doesn't seem to).
 ```
-wget http://gnu.mirror.iweb.com/libc/glibc-2.6.1.tar.gz
-tar -zxf glibc-2.6.1.tar.gz && rm glibc-2.6.1.tar.gz
-mkdir glibc-build && cd glibc-build
-../glibc-2.6.1/configure --prefix=$HOME/glibc-2.6.1
+#define htobe16(x) x
+#define htole16(x) x
+#define be16toh(x) x
+#define le16toh(x) x
+
+#define htobe32(x) x
+#define htole32(x) x
+#define be32toh(x) x
+#define le32toh(x) x
+
+#define htobe64(x) x
+#define htole64(x) x
+#define be64toh(x) x
+#define le64toh(x) x
+```
+Edit `vg-hhpc/vg/json2pb.cpp` and change `#include <jansson.h>` to `#include "/home/USERNAME/jansson-2.7/include/jansson.h"`.
+
+Edit `/home/USERNAME/jansson-2.7/include/jansson.h` and change `#include <jansson_config.h>` to `#include "jansson_config.h"`.
+
+**Get libtool**
+Do this on the main HHPC login node.
+```
+git clone git://git.savannah.gnu.org/libtool.git
+wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
+wget http://ftp.gnu.org/gnu/automake/automake-1.11.1.tar.gz
+wget http://ftp.gnu.org/gnu/help2man/help2man-1.43.3.tar.gz
+wget http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz
+tar -zxf autoconf-2.69.tar.gz && rm autoconf-2.69.tar.gz
+tar -zxf automake-1.11.1.tar.gz && rm automake-1.11.1.tar.gz
+tar -zxf help2man-1.43.3.tar.gz && rm help2man-1.43.3.tar.gz
+tar -zxf pkg-config-0.28.tar.gz && rm pkg-config-0.28.tar.gz
+cd help2man-1.43.3
+./configure --prefix=$HOME/help2man
 make && make install
-cd
-export LD_LIBRARY_PATH=$HOME/glibc-2.6.1/include:$LD_LIBRARY_PATH
+export PATH=$HOME/help2man/bin:$PATH
+cd ../autoconf-2.69
+./configure --prefix=$HOME/autoconf && make && make install
+export PATH=$HOME/autoconf/bin:$PATH
+cd ../automake-1.11.1
+./configure --prefix=$HOME/automake && make && make install
+export PATH=$HOME/automake/bin:$PATH
+cd ../pkg-config-0.28
+./configure --prefix=$HOME/pkg-config --with-internal-glib && make && make install
+export PATH=$HOME/pkg-config/bin:$PATH
+cd ../libtool
+./bootstrap
+./configure --prefix=$HOME/libtool
+make && make install
+export PATH=$HOME/libtool/bin:$PATH
 ```
 
-edit `vg-hhpc/vg/Makefile` and add `-I$HOME/jansson-2.7/include` to `INCLUDES`. Add `-L$HOME/jansson-2.7/lib` to `LDFLAGS`.
+Edit `vg-hhpc/vg/Makefile` and add `-I$HOME/jansson-2.7/include` to `INCLUDES`. Add `-L$HOME/jansson-2.7/lib` to `LDFLAGS`.
 
-Execute `make` in `vg-hhpc/vg`.
+Execute `make && make install` in `vg-hhpc/vg`.
 
 # vg Usage
 See 
