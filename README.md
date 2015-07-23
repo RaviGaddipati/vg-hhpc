@@ -1,5 +1,4 @@
 # Building vg on HHPC
-**BUILD INSTRUCTIONS INCOMPLETE**
 
 In a directory where you want vg to be clone vg-hhpc (on HHPC login node for git):
 
@@ -63,6 +62,7 @@ Edit `vg-hhpc/vg/json2pb.cpp` and change `#include <jansson.h>` to `#include "/h
 Edit `/home/USERNAME/jansson-2.7/include/jansson.h` and change `#include <jansson_config.h>` to `#include "jansson_config.h"`.
 
 **Get libtool**
+
 Do this on the main HHPC login node.
 ```
 git clone git://git.savannah.gnu.org/libtool.git
