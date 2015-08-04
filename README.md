@@ -142,6 +142,14 @@ Aligning to the index should be done using the `vg map` command.
 
 `vg map -r FILE -t THREADS -J GRAPH.vg`
 
-where `FILE` is a list of reads, 1 per line. `THREADS` is the number of threads to use, and `-J` specifies JSON output.
+where `FILE` is a list of reads, 1 per line. `THREADS` is the number of threads to use, and `-J` specifies JSON output. Reads can be generated using `vg sim`.
 
+`vg sim -l LEN -n NUM -e SUBERR -i INDELERR GRAPH.vg`
 
+`NUM` reads are generated with a nominal length of `LEN`, with an optional substitution and indel error. `vg sim` puts carriage returns in the file, so those will need to be removed before using the reads with vg map.
+
+```
+vim READS
+:%s/ctrl-V ctrl-M//g
+:wq
+```
