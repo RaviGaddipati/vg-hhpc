@@ -138,4 +138,10 @@ vg can index the graph. To create an index of 27mers that traverse no more than 
 
 `vg index -s -k 27 -t 16 -e 7 -p GRAPH.vg`
 
-Aligning to the index should be done using the `vg map` command, but I'm yet to get that to work (alignment fails, I think it's not coming up with a score > 0. Use -D for debug printing).
+Aligning to the index should be done using the `vg map` command.
+
+`vg map -r FILE -t THREADS -J GRAPH.vg`
+
+where `FILE` is a list of reads, 1 per line. `THREADS` is the number of threads to use, and `-J` specifies JSON output.
+
+
